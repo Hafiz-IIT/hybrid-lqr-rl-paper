@@ -1,0 +1,1 @@
+Manuscript and reproducibility scaffold for hybrid LQR-style prior plus learned-residual control.
