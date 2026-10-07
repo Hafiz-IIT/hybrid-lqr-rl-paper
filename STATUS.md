@@ -1,0 +1,1 @@
+Manuscript scaffold for hybrid LQR-style prior plus residual control; not published or peer reviewed.
