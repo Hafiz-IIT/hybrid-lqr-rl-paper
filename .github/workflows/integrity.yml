@@ -1,0 +1,19 @@
+name: Manuscript Integrity
+on:
+  push:
+  pull_request:
+jobs:
+  integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check required manuscript files
+        shell: bash
+        run: |
+          test -s "paper/abstract.md"
+          test -s "paper/method.md"
+          test -s "paper/claims.md"
+          test -s "paper/limitations.md"
+          test -s "paper/reproducibility.md"
+      - name: Check repository whitespace errors
+        run: git diff --check
