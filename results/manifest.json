@@ -1,0 +1,8 @@
+{
+  "study": "hybrid-nominal-residual-control",
+  "status": "not_run",
+  "results_available": false,
+  "data_type": "synthetic_scalar_plant",
+  "required_metrics": ["cumulative_cost", "terminal_error", "peak_state", "saturation_fraction", "divergence_rate"],
+  "notes": "Current code is proportional feedback plus a fixed cubic residual; no deep-RL or LQR claim."
+}
