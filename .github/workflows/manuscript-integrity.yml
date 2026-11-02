@@ -19,6 +19,9 @@ jobs:
           test -s "paper/limitations.md"
           test -s "paper/reproducibility.md"
           test -s "Makefile"
+          test -s "results/README.md"
+          test -s "results/manifest.json"
+          python -m json.tool results/manifest.json > /dev/null
       - name: Install LaTeX
         run: |
           sudo apt-get update
