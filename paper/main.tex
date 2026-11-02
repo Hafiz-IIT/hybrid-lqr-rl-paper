@@ -11,6 +11,7 @@
 We formulate an experimental study of hybrid control in which a transparent linear feedback controller is augmented by a bounded learned residual. The companion repository currently implements a scalar linear prior plus a fixed cubic residual on a synthetic plant. It does not yet implement deep reinforcement learning, solve a Riccati equation, or establish robustness or stability.
 \end{abstract}
 \section{Introduction}
+Hybrid control designs can retain a conventional controller while learning a residual correction; this pattern has been demonstrated in robot manipulation \cite{johannink2019residual}. Continuous-control RL also benefits from being interpreted through optimization and control perspectives \cite{recht2019tour}. Recent surveys emphasize the need for principled evaluation of real-world robotic DRL \cite{tang2025survey}.,The repository establishes a transparent starting point for testing hybrid control hypotheses; claims about deep-RL-enabled robustness remain future work.
 Hybrid control architectures seek to combine structured control with adaptive function approximation. A nominal controller can provide an inspectable reference action, while a residual policy may compensate for unmodelled dynamics. The interaction must be evaluated rather than assumed beneficial.
 \section{Architecture}
 The proposed architecture is $u_t=\operatorname{sat}(u_{\mathrm{LQR}}(x_t)+\operatorname{clip}(\pi_\theta(x_t),-\rho,\rho))$. In the current prototype, the nominal term is scalar proportional feedback and the residual is a fixed cubic function. This is an executable scaffold only.
@@ -24,4 +25,9 @@ No comparative results are claimed in this draft. Populate this section only aft
 A scalar simulator cannot establish robot autonomy. Action clipping does not prove stability. A fixed nonlinear residual is not deep RL. Future work requires a valid LQR design, a trained policy, robust baselines, and formal or empirical stability analysis.
 \section{Conclusion}
 The repository establishes a transparent starting point for testing hybrid control hypotheses; claims about deep-RL-enabled robustness remain future work.
+\begin{thebibliography}{9}
+\bibitem{johannink2019residual} T. Johannink et al. Residual Reinforcement Learning for Robot Control. \textit{Proceedings of the IEEE International Conference on Robotics and Automation}, 2019. DOI: \href{https://doi.org/10.1109/ICRA.2019.8794127}{10.1109/ICRA.2019.8794127}.
+\bibitem{recht2019tour} B. Recht. A Tour of Reinforcement Learning: The View from Continuous Control. \textit{Annual Review of Control, Robotics, and Autonomous Systems}, 2:253--279, 2019. DOI: \href{https://doi.org/10.1146/annurev-control-053018-023825}{10.1146/annurev-control-053018-023825}.
+\bibitem{tang2025survey} C. Tang, B. Abbatematteo, J. Hu, R. Chandra, R. Martín-Martín, and P. Stone. Deep Reinforcement Learning for Robotics: A Survey of Real-World Successes. \textit{Annual Review of Control, Robotics, and Autonomous Systems}, 8:153--188, 2025. DOI: \href{https://doi.org/10.1146/annurev-control-030323-022510}{10.1146/annurev-control-030323-022510}.
+\end{thebibliography}
 \end{document}
