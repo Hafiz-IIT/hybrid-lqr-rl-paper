@@ -1,0 +1,27 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage{hyperref}
+\title{Hybrid Control Architectures: Merging LQR and Deep RL for Robust Robot Autonomy}
+\author{Syed Hafiz Ali}
+\date{Research manuscript in preparation}
+\begin{document}
+\maketitle
+\begin{abstract}
+We formulate an experimental study of hybrid control in which a transparent linear feedback controller is augmented by a bounded learned residual. The companion repository currently implements a scalar linear prior plus a fixed cubic residual on a synthetic plant. It does not yet implement deep reinforcement learning, solve a Riccati equation, or establish robustness or stability.
+\end{abstract}
+\section{Introduction}
+Hybrid control architectures seek to combine structured control with adaptive function approximation. A nominal controller can provide an inspectable reference action, while a residual policy may compensate for unmodelled dynamics. The interaction must be evaluated rather than assumed beneficial.
+\section{Architecture}
+The proposed architecture is $u_t=\operatorname{sat}(u_{\mathrm{LQR}}(x_t)+\operatorname{clip}(\pi_\theta(x_t),-\rho,\rho))$. In the current prototype, the nominal term is scalar proportional feedback and the residual is a fixed cubic function. This is an executable scaffold only.
+\section{Experimental questions}
+Does the hybrid controller improve finite-horizon cost over the nominal baseline under model mismatch? How do residual bounds and action saturation affect tracking, peak state, and failure frequency?
+\section{Evaluation design}
+Compare prior-only, residual-only diagnostic, and hybrid policies under matched initial conditions and disturbances. Sweep plant parameters, residual bounds, and action limits. Report cumulative cost, terminal error, peak state, saturation rate, and divergence rate.
+\section{Results}
+No comparative results are claimed in this draft. Populate this section only after the full experiment matrix has been executed.
+\section{Limitations}
+A scalar simulator cannot establish robot autonomy. Action clipping does not prove stability. A fixed nonlinear residual is not deep RL. Future work requires a valid LQR design, a trained policy, robust baselines, and formal or empirical stability analysis.
+\section{Conclusion}
+The repository establishes a transparent starting point for testing hybrid control hypotheses; claims about deep-RL-enabled robustness remain future work.
+\end{document}
