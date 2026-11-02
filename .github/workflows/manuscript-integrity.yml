@@ -9,14 +9,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Verify declared manuscript files
+      - name: Verify manuscript source and protocol
         id: files
         run: |
-          test -f "paper/abstract.md"
-          test -f "paper/method.md"
-          test -f "paper/claims.md"
-          test -f "paper/limitations.md"
-          test -f "paper/reproducibility.md"
-      - name: Fail workflow when integrity check fails
-        if: steps.files.outcome != 'success'
+          test -s "paper/main.tex"
+          test -s "paper/EXPERIMENT_PROTOCOL.md"
+          test -s "paper/abstract.md"
+          test -s "paper/claims.md"
+          test -s "paper/limitations.md"
+          test -s "paper/reproducibility.md"
+          test -s "Makefile"
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends texlive-latex-base texlive-latex-recommended
+      - name: Compile manuscript
+        id: compile
+        run: make pdf
+      - name: Fail workflow when integrity or compilation fails
+        if: steps.files.outcome != 'success' || steps.compile.outcome != 'success'
         run: exit 1
