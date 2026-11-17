@@ -8,7 +8,7 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-We formulate an experimental study of hybrid control in which a transparent linear feedback controller is augmented by a bounded learned residual. The companion repository currently implements a scalar linear prior plus a fixed cubic residual on a synthetic plant. It does not yet implement deep reinforcement learning, solve a Riccati equation, or establish robustness or stability.
+We formulate an experimental study of hybrid control in which a transparent linear feedback controller is augmented by a bounded residual policy. The companion repository currently implements a scalar linear prior plus a fixed cubic residual on a synthetic plant. It does not yet implement deep reinforcement learning, solve a Riccati equation, or establish robustness or stability.
 \end{abstract}
 \section{Introduction}
 Hybrid control designs can retain a conventional controller while learning a residual correction; this pattern has been demonstrated in robot manipulation \cite{johannink2019residual}. Continuous-control RL also benefits from being interpreted through optimization and control perspectives \cite{recht2019tour}. Recent surveys emphasize the need for principled evaluation of real-world robotic DRL \cite{tang2025survey}.
