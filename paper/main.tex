@@ -2,13 +2,13 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb,booktabs}
 \usepackage{hyperref}
-\title{Hybrid Control Architectures: Merging LQR and Deep RL for Robust Robot Autonomy}
+\title{Hybrid Linear Feedback with a Fixed Residual: A Research Protocol for Robotic Control}
 \author{Syed Hafiz Ali}
 \date{Research manuscript in preparation}
 \begin{document}
 \maketitle
 \begin{abstract}
-We formulate an experimental study of hybrid control in which a transparent linear feedback controller is augmented by a bounded learned residual. The companion repository currently implements a scalar linear prior plus a fixed cubic residual on a synthetic plant. It does not yet implement deep reinforcement learning, solve a Riccati equation, or establish robustness or stability.
+We formulate an experimental study of hybrid control in which a transparent scalar linear-feedback baseline is augmented by a fixed, bounded cubic residual term. The companion repository implements this deterministic residual on a synthetic plant; it does not yet implement a learned residual policy or deep reinforcement learning, solve a Riccati equation, or establish robustness or stability.
 \end{abstract}
 \section{Introduction}
 Hybrid control designs can retain a conventional controller while learning a residual correction; this pattern has been demonstrated in robot manipulation \cite{johannink2019residual}. Continuous-control RL also benefits from being interpreted through optimization and control perspectives \cite{recht2019tour}. Recent surveys emphasize the need for principled evaluation of real-world robotic DRL \cite{tang2025survey}.
